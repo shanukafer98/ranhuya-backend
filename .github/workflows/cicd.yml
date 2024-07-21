@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v4
+      - name: Verify Docker Hub Credentials
+        run: echo ${{ secrets.DOCKER_USERNAME }} && echo ${{ secrets.DOCKER_PASSWORD }}
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}     
       - name: Build Docker Image
