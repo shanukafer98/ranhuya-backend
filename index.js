@@ -31,7 +31,7 @@ const app = express(); // Move this line before using app
 
 // Middleware
 app.use(cors({
-  origin: "https://ranhuya.vercel.app", // Update with your production domain
+  origin: "http://13.49.80.197:80", // Update with your production domain
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 }));
