@@ -28,25 +28,25 @@ mongoose
 const __dirname = path.resolve();
 
 const app = express(); // Move this line before using app
-const allowedOrigins = ['http://13.49.80.197', 'http://localhost:5173'];
+// const allowedOrigins = ['http://13.49.80.197', 'http://localhost:5173'];
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps, curl requests)
-    if (!origin) return callback(null, true);
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     // Allow requests with no origin (like mobile apps, curl requests)
+//     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true,
-  optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+//     if (allowedOrigins.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   credentials: true,
+//   optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
 app.use(express.json());
