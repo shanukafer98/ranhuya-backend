@@ -36,6 +36,12 @@ app.use(cors({
   credentials: true,
 }));
 
+app.use(cors({
+  origin: "http://localhost:5173", // Update with your production domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true,
+}));
+
 app.use(express.json());
 app.use(cookieParser());
 
