@@ -6,7 +6,7 @@ import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
-import cors from 'cors'; 
+import cors from 'cors';
 
 dotenv.config();
 
@@ -27,7 +27,7 @@ mongoose
 
 const __dirname = path.resolve();
 
-const app = express(); // Move this line before using app
+const app = express(); // Initialize app before using it
 const allowedOrigins = ['http://13.49.80.197', 'http://localhost:5173'];
 
 const corsOptions = {
@@ -53,17 +53,19 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Static files
-app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
 // Routes
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter);
 
+// Catch-all handler to serve React's index.html file for all other routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 
+// Basic route for testing
 app.get('/', (req, res) => {
   res.send('Hello World, from express');
 });
@@ -81,7 +83,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-const port =  3000;
+const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
