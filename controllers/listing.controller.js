@@ -131,6 +131,7 @@ export const getListings = async (req, res, next) => {
 
     // Return the results
     return res.status(200).json(listings);
+ 
   } catch (error) {
     next(error);
   }
